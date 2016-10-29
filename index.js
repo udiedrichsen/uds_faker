@@ -164,7 +164,7 @@ function transformFakes(r,v,k) {
 
 module.exports = function(object) {
   if ( object ) {
-    return _.transform(object._Faker,transformFakes);
+    return _.transform(object,transformFakes);
   } else {
     return object;
   }
