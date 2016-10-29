@@ -1,0 +1,20 @@
+{
+  "name": "uds_faker",
+  "version": "0.0.1",
+  "description": "Simple faker testdata helper",
+  "repository": "https://github.com/udiedrichsen/uds_faker.git",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "faker",
+    "test"
+  ],
+  "author": "Ulrich Diedrichsen",
+  "license": "MIT",
+  "dependencies": {
+    "faker": "^3.1.0",
+    "lodash": "^4.16.4"
+  }
+}
