@@ -1,6 +1,6 @@
 {
   "name": "uds_faker",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Simple faker testdata helper",
   "repository": "https://github.com/udiedrichsen/uds_faker.git",
   "main": "index.js",
