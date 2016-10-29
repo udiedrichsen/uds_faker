@@ -1,171 +1,448 @@
+'use strict';
+
 var _ = require('lodash');
 var faker = require('faker');
 
 function fakerSwitch(cmd) {
+  var result = cmd;
+
   switch (cmd) {
-    case "@address.zipCode": return faker.address.zipCode();
-    case "@address.city": return faker.address.city();
-    case "@address.cityPrefix": return faker.address.cityPrefix();
-    case "@address.citySuffix": return faker.address.citySuffix();
-    case "@address.streetName": return faker.address.streetName();
-    case "@address.streetAddress": return faker.address.streetAddress();
-    case "@address.streetSuffix": return faker.address.streetSuffix();
-    case "@address.streetPrefix": return faker.address.streetPrefix();
-    case "@address.secondaryAddress": return faker.address.secondaryAddress();
-    case "@address.county": return faker.address.county();
-    case "@address.country": return faker.address.country();
-    case "@address.countryCode": return faker.address.countryCode();
-    case "@address.state": return faker.address.state();
-    case "@address.stateAbbr": return faker.address.stateAbbr();
-    case "@address.latitude": return faker.address.latitude();
-    case "@address.longitude": return faker.address.longitude();
-    case "@random.number": return faker.random.number();
-    case "@random.arrayElement": return faker.random.arrayElement();
-    case "@random.objectElement": return faker.random.objectElement();
-    case "@random.uuid": return faker.random.uuid();
-    case "@random.boolean": return faker.random.boolean();
-    case "@random.word": return faker.random.word();
-    case "@random.words": return faker.random.words();
-    case "@random.image": return faker.random.image();
-    case "@random.locale": return faker.random.locale();
-    case "@random.alphaNumeric": return faker.random.alphaNumeric();
-    case "@commerce.color": return faker.commerce.color();
-    case "@commerce.department": return faker.commerce.department();
-    case "@commerce.productName": return faker.commerce.productName();
-    case "@commerce.price": return faker.commerce.price();
-    case "@commerce.productAdjective": return faker.commerce.productAdjective();
-    case "@commerce.productMaterial": return faker.commerce.productMaterial();
-    case "@commerce.product": return faker.commerce.product();
-    case "@company.suffixes": return faker.company.suffixes();
-    case "@company.companyName": return faker.company.companyName();
-    case "@company.companySuffix": return faker.company.companySuffix();
-    case "@company.catchPhrase": return faker.company.catchPhrase();
-    case "@company.bs": return faker.company.bs();
-    case "@company.catchPhraseAdjective": return faker.company.catchPhraseAdjective();
-    case "@company.catchPhraseDescriptor": return faker.company.catchPhraseDescriptor();
-    case "@company.catchPhraseNoun": return faker.company.catchPhraseNoun();
-    case "@company.bsAdjective": return faker.company.bsAdjective();
-    case "@company.bsBuzz": return faker.company.bsBuzz();
-    case "@company.bsNoun": return faker.company.bsNoun();
-    case "@date.past": return faker.date.past();
-    case "@date.future": return faker.date.future();
-    case "@date.between": return faker.date.between();
-    case "@date.recent": return faker.date.recent();
-    case "@date.month": return faker.date.month();
-    case "@date.weekday": return faker.date.weekday();
-    case "@finance.account": return faker.finance.account();
-    case "@finance.accountName": return faker.finance.accountName();
-    case "@finance.mask": return faker.finance.mask();
-    case "@finance.amount": return faker.finance.amount();
-    case "@finance.transactionType": return faker.finance.transactionType();
-    case "@finance.currencyCode": return faker.finance.currencyCode();
-    case "@finance.currencyName": return faker.finance.currencyName();
-    case "@finance.currencySymbol": return faker.finance.currencySymbol();
-    case "@finance.bitcoinAddress": return faker.finance.bitcoinAddress();
-    case "@hacker.abbreviation": return faker.hacker.abbreviation();
-    case "@hacker.adjective": return faker.hacker.adjective();
-    case "@hacker.noun": return faker.hacker.noun();
-    case "@hacker.verb": return faker.hacker.verb();
-    case "@hacker.ingverb": return faker.hacker.ingverb();
-    case "@hacker.phrase": return faker.hacker.phrase();
-    case "@helpers.randomize": return faker.helpers.randomize();
-    case "@helpers.slugify": return faker.helpers.slugify();
-    case "@helpers.replaceSymbolWithNumber": return faker.helpers.replaceSymbolWithNumber();
-    case "@helpers.replaceSymbols": return faker.helpers.replaceSymbols();
-    case "@helpers.shuffle": return faker.helpers.shuffle();
-    case "@helpers.mustache": return faker.helpers.mustache();
-    case "@helpers.createCard": return faker.helpers.createCard();
-    case "@helpers.contextualCard": return faker.helpers.contextualCard();
-    case "@helpers.userCard": return faker.helpers.userCard();
-    case "@helpers.createTransaction": return faker.helpers.createTransaction();
-    case "@image.image": return faker.image.image();
-    case "@image.avatar": return faker.image.avatar();
-    case "@image.imageUrl": return faker.image.imageUrl();
-    case "@image.abstract": return faker.image.abstract();
-    case "@image.animals": return faker.image.animals();
-    case "@image.business": return faker.image.business();
-    case "@image.cats": return faker.image.cats();
-    case "@image.city": return faker.image.city();
-    case "@image.food": return faker.image.food();
-    case "@image.nightlife": return faker.image.nightlife();
-    case "@image.fashion": return faker.image.fashion();
-    case "@image.people": return faker.image.people();
-    case "@image.nature": return faker.image.nature();
-    case "@image.sports": return faker.image.sports();
-    case "@image.technics": return faker.image.technics();
-    case "@image.transport": return faker.image.transport();
-    case "@internet.avatar": return faker.internet.avatar();
-    case "@internet.email": return faker.internet.email();
-    case "@internet.exampleEmail": return faker.internet.exampleEmail();
-    case "@internet.userName": return faker.internet.userName();
-    case "@internet.protocol": return faker.internet.protocol();
-    case "@internet.url": return faker.internet.url();
-    case "@internet.domainName": return faker.internet.domainName();
-    case "@internet.domainSuffix": return faker.internet.domainSuffix();
-    case "@internet.domainWord": return faker.internet.domainWord();
-    case "@internet.ip": return faker.internet.ip();
-    case "@internet.userAgent": return faker.internet.userAgent();
-    case "@internet.color": return faker.internet.color();
-    case "@internet.mac": return faker.internet.mac();
-    case "@internet.password": return faker.internet.password();
-    case "@lorem.word": return faker.lorem.word();
-    case "@lorem.words": return faker.lorem.words();
-    case "@lorem.sentence": return faker.lorem.sentence();
-    case "@lorem.sentences": return faker.lorem.sentences();
-    case "@lorem.paragraph": return faker.lorem.paragraph();
-    case "@lorem.paragraphs": return faker.lorem.paragraphs();
-    case "@lorem.text": return faker.lorem.text();
-    case "@lorem.lines": return faker.lorem.lines();
-    case "@name.firstName": return faker.name.firstName();
-    case "@name.lastName": return faker.name.lastName();
-    case "@name.findName": return faker.name.findName();
-    case "@name.jobTitle": return faker.name.jobTitle();
-    case "@name.prefix": return faker.name.prefix();
-    case "@name.suffix": return faker.name.suffix();
-    case "@name.title": return faker.name.title();
-    case "@name.jobDescriptor": return faker.name.jobDescriptor();
-    case "@name.jobArea": return faker.name.jobArea();
-    case "@name.jobType": return faker.name.jobType();
-    case "@phone.phoneNumber": return faker.phone.phoneNumber();
-    case "@phone.phoneNumberFormat": return faker.phone.phoneNumberFormat();
-    case "@phone.phoneFormats": return faker.phone.phoneFormats();
-    case "@random.number": return faker.random.number();
-    case "@random.arrayElement": return faker.random.arrayElement();
-    case "@random.objectElement": return faker.random.objectElement();
-    case "@random.uuid": return faker.random.uuid();
-    case "@random.boolean": return faker.random.boolean();
-    case "@random.word": return faker.random.word();
-    case "@random.words": return faker.random.words();
-    case "@random.image": return faker.random.image();
-    case "@random.locale": return faker.random.locale();
-    case "@random.alphaNumeric": return faker.random.alphaNumeric();
-    case "@system.fileName": return faker.system.fileName();
-    case "@system.commonFileName": return faker.system.commonFileName();
-    case "@system.mimeType": return faker.system.mimeType();
-    case "@system.commonFileType": return faker.system.commonFileType();
-    case "@system.commonFileExt": return faker.system.commonFileExt();
-    case "@system.fileType": return faker.system.fileType();
-    case "@system.fileExt": return faker.system.fileExt();
-    case "@system.directoryPath": return faker.system.directoryPath();
-    case "@system.filePath": return faker.system.filePath();
-    case "@system.semver": return faker.system.semver();
+    case  "@address.zipCode":
+      result = faker.address.zipCode();
+      break;
+    case  "@address.city":
+      result = faker.address.city();
+      break;
+    case  "@address.cityPrefix":
+      result = faker.address.cityPrefix();
+      break;
+    case  "@address.citySuffix":
+      result = faker.address.citySuffix();
+      break;
+    case  "@address.streetName":
+      result = faker.address.streetName();
+      break;
+    case  "@address.streetAddress":
+      result = faker.address.streetAddress();
+      break;
+    case  "@address.streetSuffix":
+      result = faker.address.streetSuffix();
+      break;
+    case  "@address.streetPrefix":
+      result = faker.address.streetPrefix();
+      break;
+    case  "@address.secondaryAddress":
+      result = faker.address.secondaryAddress();
+      break;
+    case  "@address.county":
+      result = faker.address.county();
+      break;
+    case  "@address.country":
+      result = faker.address.country();
+      break;
+    case  "@address.countryCode":
+      result = faker.address.countryCode();
+      break;
+    case  "@address.state":
+      result = faker.address.state();
+      break;
+    case  "@address.stateAbbr":
+      result = faker.address.stateAbbr();
+      break;
+    case  "@address.latitude":
+      result = faker.address.latitude();
+      break;
+    case  "@address.longitude":
+      result = faker.address.longitude();
+      break;
+    case  "@commerce.color":
+      result = faker.commerce.color();
+      break;
+    case  "@commerce.department":
+      result = faker.commerce.department();
+      break;
+    case  "@commerce.productName":
+      result = faker.commerce.productName();
+      break;
+    case  "@commerce.price":
+      result = faker.commerce.price();
+      break;
+    case  "@commerce.productAdjective":
+      result = faker.commerce.productAdjective();
+      break;
+    case  "@commerce.productMaterial":
+      result = faker.commerce.productMaterial();
+      break;
+    case  "@commerce.product":
+      result = faker.commerce.product();
+      break;
+    case  "@company.suffixes":
+      result = faker.company.suffixes();
+      break;
+    case  "@company.companyName":
+      result = faker.company.companyName();
+      break;
+    case  "@company.companySuffix":
+      result = faker.company.companySuffix();
+      break;
+    case  "@company.catchPhrase":
+      result = faker.company.catchPhrase();
+      break;
+    case  "@company.bs":
+      result = faker.company.bs();
+      break;
+    case  "@company.catchPhraseAdjective":
+      result = faker.company.catchPhraseAdjective();
+      break;
+    case  "@company.catchPhraseDescriptor":
+      result = faker.company.catchPhraseDescriptor();
+      break;
+    case  "@company.catchPhraseNoun":
+      result = faker.company.catchPhraseNoun();
+      break;
+    case  "@company.bsAdjective":
+      result = faker.company.bsAdjective();
+      break;
+    case  "@company.bsBuzz":
+      result = faker.company.bsBuzz();
+      break;
+    case  "@company.bsNoun":
+      result = faker.company.bsNoun();
+      break;
+    case  "@date.past":
+      result = faker.date.past();
+      break;
+    case  "@date.future":
+      result = faker.date.future();
+      break;
+    case  "@date.between":
+      result = faker.date.between();
+      break;
+    case  "@date.recent":
+      result = faker.date.recent();
+      break;
+    case  "@date.month":
+      result = faker.date.month();
+      break;
+    case  "@date.weekday":
+      result = faker.date.weekday();
+      break;
+    case  "@finance.account":
+      result = faker.finance.account();
+      break;
+    case  "@finance.accountName":
+      result = faker.finance.accountName();
+      break;
+    case  "@finance.mask":
+      result = faker.finance.mask();
+      break;
+    case  "@finance.amount":
+      result = faker.finance.amount();
+      break;
+    case  "@finance.transactionType":
+      result = faker.finance.transactionType();
+      break;
+    case  "@finance.currencyCode":
+      result = faker.finance.currencyCode();
+      break;
+    case  "@finance.currencyName":
+      result = faker.finance.currencyName();
+      break;
+    case  "@finance.currencySymbol":
+      result = faker.finance.currencySymbol();
+      break;
+    case  "@finance.bitcoinAddress":
+      result = faker.finance.bitcoinAddress();
+      break;
+    case  "@hacker.abbreviation":
+      result = faker.hacker.abbreviation();
+      break;
+    case  "@hacker.adjective":
+      result = faker.hacker.adjective();
+      break;
+    case  "@hacker.noun":
+      result = faker.hacker.noun();
+      break;
+    case  "@hacker.verb":
+      result = faker.hacker.verb();
+      break;
+    case  "@hacker.ingverb":
+      result = faker.hacker.ingverb();
+      break;
+    case  "@hacker.phrase":
+      result = faker.hacker.phrase();
+      break;
+    case  "@helpers.randomize":
+      result = faker.helpers.randomize();
+      break;
+    case  "@helpers.slugify":
+      result = faker.helpers.slugify();
+      break;
+    case  "@helpers.replaceSymbolWithNumber":
+      result = faker.helpers.replaceSymbolWithNumber();
+      break;
+    case  "@helpers.replaceSymbols":
+      result = faker.helpers.replaceSymbols();
+      break;
+    case  "@helpers.shuffle":
+      result = faker.helpers.shuffle();
+      break;
+    case  "@helpers.mustache":
+      result = faker.helpers.mustache();
+      break;
+    case  "@helpers.createCard":
+      result = faker.helpers.createCard();
+      break;
+    case  "@helpers.contextualCard":
+      result = faker.helpers.contextualCard();
+      break;
+    case  "@helpers.userCard":
+      result = faker.helpers.userCard();
+      break;
+    case  "@helpers.createTransaction":
+      result = faker.helpers.createTransaction();
+      break;
+    case  "@image.image":
+      result = faker.image.image();
+      break;
+    case  "@image.avatar":
+      result = faker.image.avatar();
+      break;
+    case  "@image.imageUrl":
+      result = faker.image.imageUrl();
+      break;
+    case  "@image.abstract":
+      result = faker.image.abstract();
+      break;
+    case  "@image.animals":
+      result = faker.image.animals();
+      break;
+    case  "@image.business":
+      result = faker.image.business();
+      break;
+    case  "@image.cats":
+      result = faker.image.cats();
+      break;
+    case  "@image.city":
+      result = faker.image.city();
+      break;
+    case  "@image.food":
+      result = faker.image.food();
+      break;
+    case  "@image.nightlife":
+      result = faker.image.nightlife();
+      break;
+    case  "@image.fashion":
+      result = faker.image.fashion();
+      break;
+    case  "@image.people":
+      result = faker.image.people();
+      break;
+    case  "@image.nature":
+      result = faker.image.nature();
+      break;
+    case  "@image.sports":
+      result = faker.image.sports();
+      break;
+    case  "@image.technics":
+      result = faker.image.technics();
+      break;
+    case  "@image.transport":
+      result = faker.image.transport();
+      break;
+    case  "@internet.avatar":
+      result = faker.internet.avatar();
+      break;
+    case  "@internet.email":
+      result = faker.internet.email();
+      break;
+    case  "@internet.exampleEmail":
+      result = faker.internet.exampleEmail();
+      break;
+    case  "@internet.userName":
+      result = faker.internet.userName();
+      break;
+    case  "@internet.protocol":
+      result = faker.internet.protocol();
+      break;
+    case  "@internet.url":
+      result = faker.internet.url();
+      break;
+    case  "@internet.domainName":
+      result = faker.internet.domainName();
+      break;
+    case  "@internet.domainSuffix":
+      result = faker.internet.domainSuffix();
+      break;
+    case  "@internet.domainWord":
+      result = faker.internet.domainWord();
+      break;
+    case  "@internet.ip":
+      result = faker.internet.ip();
+      break;
+    case  "@internet.userAgent":
+      result = faker.internet.userAgent();
+      break;
+    case  "@internet.color":
+      result = faker.internet.color();
+      break;
+    case  "@internet.mac":
+      result = faker.internet.mac();
+      break;
+    case  "@internet.password":
+      result = faker.internet.password();
+      break;
+    case  "@lorem.word":
+      result = faker.lorem.word();
+      break;
+    case  "@lorem.words":
+      result = faker.lorem.words();
+      break;
+    case  "@lorem.sentence":
+      result = faker.lorem.sentence();
+      break;
+    case  "@lorem.sentences":
+      result = faker.lorem.sentences();
+      break;
+    case  "@lorem.paragraph":
+      result = faker.lorem.paragraph();
+      break;
+    case  "@lorem.paragraphs":
+      result = faker.lorem.paragraphs();
+      break;
+    case  "@lorem.text":
+      result = faker.lorem.text();
+      break;
+    case  "@lorem.lines":
+      result = faker.lorem.lines();
+      break;
+    case  "@name.firstName":
+      result = faker.name.firstName();
+      break;
+    case  "@name.lastName":
+      result = faker.name.lastName();
+      break;
+    case  "@name.findName":
+      result = faker.name.findName();
+      break;
+    case  "@name.jobTitle":
+      result = faker.name.jobTitle();
+      break;
+    case  "@name.prefix":
+      result = faker.name.prefix();
+      break;
+    case  "@name.suffix":
+      result = faker.name.suffix();
+      break;
+    case  "@name.title":
+      result = faker.name.title();
+      break;
+    case  "@name.jobDescriptor":
+      result = faker.name.jobDescriptor();
+      break;
+    case  "@name.jobArea":
+      result = faker.name.jobArea();
+      break;
+    case  "@name.jobType":
+      result = faker.name.jobType();
+      break;
+    case  "@phone.phoneNumber":
+      result = faker.phone.phoneNumber();
+      break;
+    case  "@phone.phoneNumberFormat":
+      result = faker.phone.phoneNumberFormat();
+      break;
+    case  "@phone.phoneFormats":
+      result = faker.phone.phoneFormats();
+      break;
+    case  "@random.number":
+      result = faker.random.number();
+      break;
+    case  "@random.arrayElement":
+      result = faker.random.arrayElement();
+      break;
+    case  "@random.objectElement":
+      result = faker.random.objectElement();
+      break;
+    case  "@random.uuid":
+      result = faker.random.uuid();
+      break;
+    case  "@random.boolean":
+      result = faker.random.boolean();
+      break;
+    case  "@random.word":
+      result = faker.random.word();
+      break;
+    case  "@random.words":
+      result = faker.random.words();
+      break;
+    case  "@random.image":
+      result = faker.random.image();
+      break;
+    case  "@random.locale":
+      result = faker.random.locale();
+      break;
+    case  "@random.alphaNumeric":
+      result = faker.random.alphaNumeric();
+      break;
+    case  "@system.fileName":
+      result = faker.system.fileName();
+      break;
+    case  "@system.commonFileName":
+      result = faker.system.commonFileName();
+      break;
+    case  "@system.mimeType":
+      result = faker.system.mimeType();
+      break;
+    case  "@system.commonFileType":
+      result = faker.system.commonFileType();
+      break;
+    case  "@system.commonFileExt":
+      result = faker.system.commonFileExt();
+      break;
+    case  "@system.fileType":
+      result = faker.system.fileType();
+      break;
+    case  "@system.fileExt":
+      result = faker.system.fileExt();
+      break;
+    case  "@system.directoryPath":
+      result = faker.system.directoryPath();
+      break;
+    case  "@system.filePath":
+      result = faker.system.filePath();
+      break;
+    case  "@system.semver":
+      result = faker.system.semver();
     default:
-      return cmd;
+      result = cmd;
   }
+
+  return result;
 }
 
-function transformFakes(r,v,k) {
-  if ( _.isObject(v) ) {
-    r[k] = _.transform(v,transformFakes);
+function transformFakes(r, v, k) {
+  if (_.isObject(v)) {
+    r[k] = _.transform(v, transformFakes);
   } else {
-    r[r] = fakerSwitch(v);
+    r[k] = fakerSwitch(v);
   }
+
 }
 
-module.exports = function(object) {
-  if ( object ) {
-    return _.transform(object,transformFakes);
-  } else {
-    return object;
+module.exports = function (object,locale) {
+  var result = object;
+
+  if (object) {
+    if ( locale ) {
+      faker.locale = locale;
+    } else {
+      faker.locale = 'de';
+    }
+
+    result = _.cloneDeep(object);
+    result = _.transform(result, transformFakes);
   }
+
+  return result;
 };
